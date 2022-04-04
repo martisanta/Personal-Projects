@@ -2,16 +2,72 @@
 #include <algorithm>
 #include <array>
 using namespace std;
-
+bool check( char a[3][3], bool *win1, bool *win2){
+    if(a[0][0] == 'X' && a[0][1] == 'X'&& a[0][2] == 'X'){
+         return *win1 = true;
+    }
+    if(a[1][0] == 'X' && a[1][1] == 'X'&& a[1][2] == 'X'){
+         return *win1 = true;
+    }
+    if(a[2][0] == 'X' && a[2][1] == 'X'&& a[2][2] == 'X'){
+         return *win1 = true;
+    }
+    if(a[0][0] == 'X' && a[1][0] == 'X'&& a[2][0] == 'X'){
+        return *win1 = true;
+    }
+    if(a[0][1] == 'X' && a[1][1] == 'X'&& a[2][1] == 'X'){
+         return *win1 = true;
+    }
+    if(a[0][2] == 'X' && a[1][2] == 'X'&& a[2][2] == 'X'){
+         return *win1 = true;
+    }
+    if(a[0][0] == 'X' && a[1][1] == 'X'&& a[2][2] == 'X'){
+         return *win1 = true;
+    }
+    if (a[2][0] == 'X' && a[1][1] == 'X'&& a[0][2] == 'X'){
+         return *win1 = true;
+    }
+    //checking for win2 now
+    if(a[0][0] == 'O' && a[0][1] == 'O'&& a[0][2] == 'O'){
+         return *win2 = true;
+    }
+    if(a[1][0] == 'O' && a[1][1] == 'O'&& a[1][2] == 'O'){
+         return *win2 = true;
+    }
+    if(a[2][0] == 'O' && a[2][1] == 'O'&& a[2][2] == 'O'){
+         return *win2 = true;
+    }
+    if(a[0][0] == 'O' && a[1][0] == 'O'&& a[2][0] == 'O'){
+         return *win2 = true;
+    }
+    if(a[0][1] == 'O' && a[1][1] == 'O'&& a[2][1] == 'O'){
+         return *win2 = true;
+    }
+    if(a[0][2] == 'O' && a[1][2] == 'O'&& a[2][2] == 'O'){
+         return *win2 = true;
+    }
+    if(a[0][0] == 'O' && a[1][1] == 'O'&& a[2][2] == 'O'){
+         return *win2 = true;
+    }
+    if (a[2][0] == 'O' && a[1][1] == 'O'&& a[0][2] == 'O'){
+         return *win2 = true;
+    }
+    else{
+        return *win1 = false;
+        return *win2 = false;
+    }
+    return *win1;
+    return *win2;
+}
+    
 void game( string player1, string player2){
     char position1;
     string string1;
     string string2;
     char position2;
     string array;
-    string wins[54] = {"abc","acb", "cba", "cab", "bca", "bac", "def", "dfe", "fde","fed","edf", "efd", "ghi", "gih", "igh", "hig", "hgi", "ihg",
-    "adg", "dga", "agd", "dag", "gad", "gda", "beh", "bhe", "heb", "hbe", "ehb", "ebh",  "cfi", "cif", "ifc", "fci", "fic", "icf", 
-    "aei", "iae", "eai", "eia", "aie", "iea", "gec", "ceg", "gce", "cge", "egc", "ecg", "beh", "bhe", "heb", "hbe", "ehb", "ebh"};
+    bool win1;
+    bool win2;
     char a[3][3] = {{'a','b','c'},{'d','e','f'},{'g','h','i'}};
     for (int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
@@ -21,6 +77,10 @@ void game( string player1, string player2){
     }
     cout << player1 << " What position would you like to choose?"<< endl;
     cin  >> position1;
+    while(position1 != 'a' && position1 != 'b' && position1 != 'c' && position1 != 'd' && position1 != 'e' && position1 != 'f' && position1 != 'g' && position1 != 'h' && position1 != 'i'){
+        cout << "That's not an option sweetheart. Try again." << endl;
+        cin >> position1;
+    }
     switch(position1){
         case 'a':
         a[0][0] = 'X';
@@ -76,6 +136,10 @@ void game( string player1, string player2){
     }
     cout << "Groovy. "<< player2 << " what position would you like to choose?"<< endl;
     cin >> position2;
+    while(position2 != 'a' && position2 != 'b' && position2 != 'c' && position2 != 'd' && position2 != 'e' && position2 != 'f' && position2 != 'g' && position2 != 'h' && position2 != 'i'){
+        cout << "That's not an option sweetheart. Try again." << endl;
+        cin >> position2;
+    }
     switch(position2){
         case 'a':
         a[0][0] = 'O';
@@ -131,6 +195,10 @@ void game( string player1, string player2){
     }
     cout << "Ok best friend. "<< player1 << " Your turn!!"<< endl;
     cin >> position1;
+    while(position1 != 'a' && position1 != 'b' && position1 != 'c' && position1 != 'd' && position1 != 'e' && position1 != 'f' && position1 != 'g' && position1 != 'h' && position1 != 'i'){
+        cout << "That's not an option sweetheart. Try again." << endl;
+        cin >> position1;
+    }
     switch(position1){
         case 'a':
         a[0][0] = 'X';
@@ -186,6 +254,10 @@ void game( string player1, string player2){
     }
     cout << "Hmmmm, interesting choice... "<< player2 << " , your turn girlboss."<< endl;
     cin >> position2;
+    while(position2 != 'a' && position2 != 'b' && position2 != 'c' && position2 != 'd' && position2 != 'e' && position2 != 'f' && position2 != 'g' && position2 != 'h' && position2 != 'i'){
+        cout << "That's not an option sweetheart. Try again." << endl;
+        cin >> position2;
+    }
    switch(position2){
         case 'a':
         a[0][0] = 'O';
@@ -239,11 +311,12 @@ void game( string player1, string player2){
         }
         cout << endl;
     }
-    
-    bool win1 = count(begin(wins), std::end(wins), string1) > 0;
-    bool win2 = count(begin(wins), std::end(wins), string2) > 0;
     while(win1 == false && win2 == false && array.length() != 9){
 cout << "Ok "<< player1 << " Your turn!!"<< endl;
+while(position1 != 'a' && position1 != 'b' && position1 != 'c' && position1 != 'd' && position1 != 'e' && position1 != 'f' && position1 != 'g' && position1 != 'h' && position1 != 'i'){
+        cout << "That's not an option sweetheart. Try again." << endl;
+        cin >> position1;
+    }
     cin >> position1;
     switch(position1){
         case 'a':
@@ -298,7 +371,8 @@ cout << "Ok "<< player1 << " Your turn!!"<< endl;
         }
         cout << endl;
     }
-    bool win1 = count(begin(wins), std::end(wins), string1) > 0;
+    check(a, &win1, &win2);
+ 
     if(win1 == true){
         cout << "Congratulations "<< player1 << " YOU won!! I was rooting for your the whole time btw."<< endl;
         break;
@@ -309,6 +383,10 @@ cout << "Ok "<< player1 << " Your turn!!"<< endl;
     }
     cout << "HMMM intense... "<< player2 << " , your turn."<< endl;
     cin >> position2;
+    while(position2 != 'a' && position2 != 'b' && position2 != 'c' && position2 != 'd' && position2 != 'e' && position2 != 'f' && position2 != 'g' && position2 != 'h' && position2 != 'i'){
+        cout << "That's not an option sweetheart. Try again." << endl;
+        cin >> position2;
+    }
     switch(position2){
         case 'a':
         a[0][0] = 'O';
@@ -362,8 +440,7 @@ cout << "Ok "<< player1 << " Your turn!!"<< endl;
         }
         cout << endl;
     }
-    cout << string2 << endl;
-    bool win2 = count(begin(wins), std::end(wins), string2) > 0;
+    check(a, &win1, &win2);
     if (win2 == true){
          cout << "Congratulations "<< player2 << " YOU won!! I was rooting for you the whole time btw."<< endl;
     }
@@ -371,7 +448,6 @@ cout << "Ok "<< player1 << " Your turn!!"<< endl;
         cout << "A tie. How dissapointing." << endl;
     }
 }
-
 }
 
 int main(){
